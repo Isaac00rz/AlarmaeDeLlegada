@@ -21,6 +21,10 @@ void loop() {
 
   //Inicio de la alarma 
   
+  while(digitalRead(pinRedSw)==LOW){ //Ciclo para que la alarma no se desactive hasta que el estado no pase a high
+    digitalWrite(pinBoozer, HIGH);
+  }
+  
 }
 
 void despertar(void){
