@@ -1,3 +1,8 @@
+/*Autor: Isaac Ulises Hernandez Marquez
+  Materia: Sistemas programables
+  Instituto Tecnologico de Leon
+*/
+
 #include <avr/sleep.h>
 #include <avr/power.h>
 
