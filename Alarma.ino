@@ -11,15 +11,12 @@ int pinBuzzer = 13; //Pin usado para el sonido de la alarma
 
 
 void setup() {
-  Serial.begin(9600);
-  pinMode(pinRedSw, INPUT_PULLUP);
+  pinMode(pinRedSw, INPUT_PULLUP);//Modo pullup para poder leer el reedswitch
   pinMode(pinBuzzer, OUTPUT);
   digitalWrite(pinBuzzer, LOW);
 }
 
 void loop() {
-  digitalWrite(pinBuzzer, LOW);// Cambio del boozer a low
-  Serial.println("Voy a dormir...");
   delay(500); // Delay para que cargue el modo sleep power down
   attachInterrupt(digitalPinToInterrupt(pinRedSw), despertar,LOW);// Interrupcion para despertar
   set_sleep_mode(SLEEP_MODE_PWR_DOWN);
@@ -28,9 +25,10 @@ void loop() {
   
   //Aqui se duerme el programa, y al despertar empezara desde la linea de abajo
   //Inicio de la alarma 
-  Serial.println("Desperte!!");
   while(digitalRead(pinRedSw)==LOW){ //Ciclo para que la alarma no se desactive hasta que el estado no pase a high
     digitalWrite(pinBuzzer, HIGH);
+    delay(700);
+    digitalWrite(pinBuzzer, LOW);
   }
 }
 
